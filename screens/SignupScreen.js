@@ -3,7 +3,7 @@ import AuthContent from '../components/Auth/AuthContent';
 import { createUser } from '../util/auth';
 import LoadingOverlay from '../components/ui/LoadingOverlay';
 import { Alert } from 'react-native';
-import AuthContext from '../store/auth-context';
+import { AuthContext } from '../store/auth-context';
 
 
 function SignupScreen() {
@@ -22,8 +22,9 @@ function SignupScreen() {
         'Authentication Failed', 
         'Could not create user. Please check you credentials or try again later!'
       );
+      setIsAuthenticating(false);
     }
-    setIsAuthenticating(false);
+
   }
 
   if(isAuthenticating) {

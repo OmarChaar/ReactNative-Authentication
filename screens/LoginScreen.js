@@ -3,7 +3,7 @@ import { login } from '../util/auth';
 import { useState, useContext } from 'react';
 import LoadingOverlay from '../components/ui/LoadingOverlay';
 import { Alert } from 'react-native';
-import AuthContext from '../store/auth-context';
+import { AuthContext } from '../store/auth-context';
 
 
 function LoginScreen() {
@@ -23,9 +23,8 @@ function LoginScreen() {
         'Authentication Failed', 
         'Could not log you in. Please check you credentials or try again later!'
       );
+      setIsAuthenticating(false);
     }
-
-    setIsAuthenticating(false);
   }
 
   if(isAuthenticating) {
