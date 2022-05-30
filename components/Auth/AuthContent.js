@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-
+import  { useNavigation } from '@react-navigation/native'
 import FlatButton from '../ui/FlatButton';
 import AuthForm from './AuthForm';
 import { Colors } from '../../constants/styles';
 
 function AuthContent({ isLogin, onAuthenticate }) {
+
+  const navigate = useNavigation();
 
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
@@ -15,7 +17,13 @@ function AuthContent({ isLogin, onAuthenticate }) {
   });
 
   function switchAuthModeHandler() {
-    // Todo
+    if(isLogin) {
+      // using 'replace' swaps the pages and does not stack them, there is no forth and back.
+      navigate.replace('Signup');
+    }
+    else {
+      navigate.replace('Login');
+    }
   }
 
   function submitHandler(credentials) {
